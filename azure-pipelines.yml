@@ -37,7 +37,7 @@ stages:
               spotBugsAnalysis: false
           - task: AzureCLI@2
             inputs:
-              azureSubscription: 'gildong-acr-conn'
+              azureSubscription: '<xxx-acr-conn>'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: 'az acr build -t spring-music:$(Build.BuildId) -r $(acrName) -g $(resourceGroup) .'
