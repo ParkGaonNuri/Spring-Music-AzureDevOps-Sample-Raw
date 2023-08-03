@@ -16,6 +16,7 @@ variables:
   poolName: 'ubuntu-20.04'
   acrName: '<ACR NAME>'
   resourceGroup: '<ACR이 위치한 Resource Group>'
+  subscription: '<xxx-acr-conn>'
 
 stages:
   - stage: Build
@@ -37,7 +38,7 @@ stages:
               spotBugsAnalysis: false
           - task: AzureCLI@2
             inputs:
-              azureSubscription: '<xxx-acr-conn>'
+              azureSubscription: $(subscription)
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: 'az acr build -t spring-music:$(Build.BuildId) -r $(acrName) -g $(resourceGroup) .'
